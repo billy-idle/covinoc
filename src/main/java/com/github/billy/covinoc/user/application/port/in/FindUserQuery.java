@@ -6,7 +6,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Validated
-public interface FindUserUseCase {
+public interface FindUserQuery {
 
   @Valid UserResponseModel findByNumberId(@Valid UserFindRequestModel userFindRequestModel);
 

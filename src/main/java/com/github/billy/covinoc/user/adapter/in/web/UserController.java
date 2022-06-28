@@ -3,7 +3,7 @@ package com.github.billy.covinoc.user.adapter.in.web;
 import com.github.billy.covinoc.common.annotation.WebAdapter;
 import com.github.billy.covinoc.user.application.port.in.CreateUserUseCase;
 import com.github.billy.covinoc.user.application.port.in.DeleteUserUseCase;
-import com.github.billy.covinoc.user.application.port.in.FindUserUseCase;
+import com.github.billy.covinoc.user.application.port.in.FindUserQuery;
 import com.github.billy.covinoc.user.application.port.in.UpdateUserUseCase;
 import com.github.billy.covinoc.user.application.port.in.UserCreateRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserDeleteRequestModel;
@@ -28,7 +28,7 @@ public class UserController {
   private final CreateUserUseCase createUserUseCase;
   private final UpdateUserUseCase updateUserUseCase;
   private final DeleteUserUseCase deleteUserUseCase;
-  private final FindUserUseCase findUserUseCase;
+  private final FindUserQuery findUserQuery;
 
   @PostMapping("/create")
   public UserResponseModel createUser(@RequestBody UserCreateRequestModel userCreateRequestModel) {
@@ -47,11 +47,11 @@ public class UserController {
 
   @GetMapping("/find")
   public UserResponseModel findByNumberId(@RequestBody UserFindRequestModel userFindRequestModel) {
-    return findUserUseCase.findByNumberId(userFindRequestModel);
+    return findUserQuery.findByNumberId(userFindRequestModel);
   }
 
   @GetMapping("/find-all")
   public List<UserResponseModel> findAll() {
-    return findUserUseCase.findAll();
+    return findUserQuery.findAll();
   }
 }
