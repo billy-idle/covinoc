@@ -8,6 +8,7 @@ import com.github.billy.covinoc.common.mapper.NameMapper;
 import com.github.billy.covinoc.common.mapper.NumberIdMapper;
 import com.github.billy.covinoc.common.mapper.PhoneNumberMapper;
 import com.github.billy.covinoc.common.mapper.StatusMapper;
+import com.github.billy.covinoc.common.utilities.Utility;
 import com.github.billy.covinoc.user.adapter.out.persistence.UserJpaEntity;
 import com.github.billy.covinoc.user.application.port.in.UserCreateRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserDeleteRequestModel;
@@ -18,6 +19,8 @@ import com.github.billy.covinoc.user.domain.User;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,4 +55,15 @@ public interface UserMapper {
   }
 
   UserResponseModel toResponseModel(User user);
+
+  default JSONObject toJson(UserCreateRequestModel userCreateRequestModel) throws JSONException {
+    JSONObject jsonObject = new JSONObject();
+
+    jsonObject.put("id", new Id(Utility.INTEGER_ZERO));
+    jsonObject.put("name", userCreateRequestModel.getName());
+    jsonObject.put("numberId", userCreateRequestModel.getNumberId());
+    jsonObject.put("phoneNumber", userCreateRequestModel.getPhoneNumber());
+
+    return jsonObject;
+  }
 }
