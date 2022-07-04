@@ -116,4 +116,4 @@ http://localhost:8080/swagger-ui/index.htm
 
 Se listan los endpoints desarrollados hasta el momento, los cuáles corresponden con los casos de uso implementados. 
 
-[1]: /src/main/resources/docs/images/hexagonal-architecture.png
+[1]: https://github.com/billy-idle/covinoc/blob/architecturally-expresive/src/main/resources/images/hexagonal-architecture.png
