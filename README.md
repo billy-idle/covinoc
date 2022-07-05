@@ -111,7 +111,7 @@ C:.
 ### Swagger
 
 ```console
-http://localhost:8080/swagger-ui/index.htm
+http://localhost:8080/swagger-ui/index.html
 ```
 
 Se listan los endpoints desarrollados hasta el momento, los cuáles corresponden con los casos de uso implementados. 
