@@ -25,7 +25,7 @@ class FindUserService implements FindUserQuery {
   }
 
   @Override
-  public List<@Valid UserResponseModel> findAll() {
+  public List<UserResponseModel> findAll() {
     return userMapper.toResponseModel(findUser.findAll());
   }
 }
