@@ -7,7 +7,7 @@ import com.github.billy.covinoc.user.application.port.in.FindUserQuery;
 import com.github.billy.covinoc.user.application.port.in.UpdateUserUseCase;
 import com.github.billy.covinoc.user.application.port.in.UserCreateRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserDeleteRequestModel;
-import com.github.billy.covinoc.user.application.port.in.UserFindRequestModel;
+import com.github.billy.covinoc.user.application.port.in.UserFindByIdRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserResponseModel;
 import com.github.billy.covinoc.user.application.port.in.UserUpdateRequestModel;
 import lombok.RequiredArgsConstructor;
@@ -45,13 +45,13 @@ public class UserController {
     deleteUserUseCase.delete(userDeleteRequestModel);
   }
 
-  @GetMapping("/find")
-  public UserResponseModel findByNumberId(@RequestBody UserFindRequestModel userFindRequestModel) {
-    return findUserQuery.findByNumberId(userFindRequestModel);
+  @GetMapping("/find-by-id")
+  public UserResponseModel findUserByNumberId(@RequestBody UserFindByIdRequestModel userFindByIdRequestModel) {
+    return findUserQuery.findByNumberId(userFindByIdRequestModel);
   }
 
   @GetMapping("/find-all")
-  public List<UserResponseModel> findAll() {
+  public List<UserResponseModel> findAllUsers() {
     return findUserQuery.findAll();
   }
 }
