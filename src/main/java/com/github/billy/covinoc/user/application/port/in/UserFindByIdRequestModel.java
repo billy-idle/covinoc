@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 @Value
 @Builder(toBuilder = true)
 @AllArgsConstructor
-public class UserFindRequestModel {
+public class UserFindByIdRequestModel {
 
   @Pattern(regexp = NumberId.REGEX, message = NumberId.NOT_VALID)
   String numberId;

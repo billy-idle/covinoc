@@ -8,7 +8,7 @@ import java.util.List;
 @Validated
 public interface FindUserQuery {
 
-  @Valid UserResponseModel findByNumberId(@Valid UserFindRequestModel userFindRequestModel);
+  @Valid UserResponseModel findByNumberId(@Valid UserFindByIdRequestModel userFindByIdRequestModel);
 
   List<@Valid UserResponseModel> findAll();
 }

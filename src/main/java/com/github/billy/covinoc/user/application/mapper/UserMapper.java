@@ -12,7 +12,7 @@ import com.github.billy.covinoc.common.utilities.Utility;
 import com.github.billy.covinoc.user.adapter.out.persistence.UserJpaEntity;
 import com.github.billy.covinoc.user.application.port.in.UserCreateRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserDeleteRequestModel;
-import com.github.billy.covinoc.user.application.port.in.UserFindRequestModel;
+import com.github.billy.covinoc.user.application.port.in.UserFindByIdRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserResponseModel;
 import com.github.billy.covinoc.user.application.port.in.UserUpdateRequestModel;
 import com.github.billy.covinoc.user.domain.User;
@@ -48,7 +48,7 @@ public interface UserMapper {
   NumberId toNumberId(UserDeleteRequestModel userDeleteRequestModel);
 
   @Mapping(source = "numberId", target = "value")
-  NumberId toNumberId(UserFindRequestModel userFindRequestModel);
+  NumberId toNumberId(UserFindByIdRequestModel userFindByIdRequestModel);
 
   default List<UserResponseModel> toResponseModel(List<User> users) {
     return users.stream().map(this::toResponseModel).collect(Collectors.toList());
