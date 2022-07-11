@@ -7,16 +7,18 @@ import com.github.billy.covinoc.user.application.port.in.FindUserQuery;
 import com.github.billy.covinoc.user.application.port.in.UpdateUserUseCase;
 import com.github.billy.covinoc.user.application.port.in.UserCreateRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserDeleteRequestModel;
-import com.github.billy.covinoc.user.application.port.in.UserFindByIdRequestModel;
 import com.github.billy.covinoc.user.application.port.in.UserResponseModel;
 import com.github.billy.covinoc.user.application.port.in.UserUpdateRequestModel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class UserController {
   private final FindUserQuery findUserQuery;
 
   @PostMapping("/create")
+  @ResponseStatus(value = HttpStatus.CREATED)
   public UserResponseModel createUser(@RequestBody UserCreateRequestModel userCreateRequestModel) {
     return createUserUseCase.create(userCreateRequestModel);
   }
@@ -45,9 +48,9 @@ public class UserController {
     deleteUserUseCase.delete(userDeleteRequestModel);
   }
 
-  @GetMapping("/find-by-id")
-  public UserResponseModel findUserByNumberId(@RequestBody UserFindByIdRequestModel userFindByIdRequestModel) {
-    return findUserQuery.findByNumberId(userFindByIdRequestModel);
+  @GetMapping("/find-by-number-id") // https://stackoverflow.com/questions/42256358/spring-getmapping-with-requestparam-and-requestbody-fails-with-httpmessagenot
+  public UserResponseModel findUserByNumberId(@RequestParam String value) {
+    return findUserQuery.findByNumberId(value);
   }
 
   @GetMapping("/find-all")
