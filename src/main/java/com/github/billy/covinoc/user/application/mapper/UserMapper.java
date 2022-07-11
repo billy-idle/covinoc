@@ -47,9 +47,6 @@ public interface UserMapper {
   @Mapping(source = "numberId", target = "value")
   NumberId toNumberId(UserDeleteRequestModel userDeleteRequestModel);
 
-  @Mapping(source = "numberId", target = "value")
-  NumberId toNumberId(UserFindByIdRequestModel userFindByIdRequestModel);
-
   default List<UserResponseModel> toResponseModel(List<User> users) {
     return users.stream().map(this::toResponseModel).collect(Collectors.toList());
   }
